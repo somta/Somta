@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package net.somta.common.utils.encrypt;
 
 /**
@@ -10,7 +5,17 @@ package net.somta.common.utils.encrypt;
  */
 public interface Coder {
 
+    /**
+     * 加密
+     * @param var1
+     * @return
+     */
     String encode(byte[] var1);
 
+    /**
+     * 解密
+     * @param var1
+     * @return
+     */
     byte[] decode(String var1);
 }

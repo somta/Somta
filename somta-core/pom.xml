@@ -6,7 +6,7 @@
 
     <name>somta-core</name>
     <description>Use Somta for rapid development</description>
-    <url>https://gitee.com/Somta/Somta/tree/master/somta-core</url>
+    <url>https://github.com/somta/Somta/tree/master/somta-core</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,8 +23,8 @@
     </licenses>
 
     <scm>
-        <url>https://gitee.com/Somta/Somta.git</url>
-        <connection>git@gitee.com:Somta/Somta.git</connection>
+        <url>https://github.com/somta/Somta.git</url>
+        <connection>git@github.com:somta/Somta.git</connection>
         <developerConnection>http://www.somta.net</developerConnection>
     </scm>
 

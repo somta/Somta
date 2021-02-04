@@ -184,15 +184,6 @@ public class FileUtil {
         return  fileName.substring(idx);
     }
 
-   /* public static String generateUUIDFileName(String fileExtensition) {
-        String uid = CodeNumBuilder.makeOrderNum("files", "yyyyMMddHHmmssSSS");
-        return new StringBuilder()
-                .append(uid)
-                .append(fileExtensition)
-                .toString();
-
-    }*/
-
     /**
      * 获取文件名的后缀
      * @param fileName

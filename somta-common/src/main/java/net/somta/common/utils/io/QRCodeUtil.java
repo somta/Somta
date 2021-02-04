@@ -12,7 +12,6 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import net.somta.common.utils.encrypt.Base64;
-import sun.misc.BASE64Decoder;
 
 import java.awt.BasicStroke;
 import java.awt.Graphics;
