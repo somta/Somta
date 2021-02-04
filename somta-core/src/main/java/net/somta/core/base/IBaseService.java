@@ -1,0 +1,59 @@
+package net.somta.core.base;
+
+import com.github.pagehelper.PageInfo;
+import net.somta.core.base.result.ResponseDataResult;
+
+
+public interface IBaseService{
+
+	public abstract IBaseDao getDao();
+
+
+	/**
+	 * 新增
+	 * @param t 实体参数
+	 * @param <T> 实体
+	 * @return 返回结果
+	 * @throws Exception 异常
+	 */
+	<T> ResponseDataResult add(T t)  throws Exception;
+
+	/**
+	 * 根据ID删除
+	 * @param id 删除ID
+	 * @return 返回结果
+	 * @throws Exception 异常
+	 */
+	ResponseDataResult deleteById(Object id) throws Exception;
+
+	/**
+	 * 修改
+	 * @param t 入参
+	 * @param <T> 实体
+	 * @return 返回结果
+	 * @throws Exception 异常
+	 */
+	<T> ResponseDataResult update(T t)  throws Exception;
+
+	/**
+	 * 根据Id查询
+	 * @param id 查询ID
+	 * @param <T> 实体
+	 * @return 返回结果
+	 * @throws Exception 异常
+	 */
+	<T> T queryById(Object id) throws Exception;
+
+
+	/**
+	 * 查询列表
+	 * @param pageNum 页数
+	 * @param pageSize 每页条数
+	 * @param param 查询参数
+	 * @param <T> 实体
+	 * @return 返回结果列表
+	 * @throws Exception 异常
+	 */
+	<T> PageInfo<T> queryByList(Integer pageNum,Integer pageSize,Object param) throws Exception;
+
+}
