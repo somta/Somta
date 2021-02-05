@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 package net.somta.common.utils.encrypt;
 
 public final class Base64Coder implements Coder {
@@ -73,6 +68,7 @@ public final class Base64Coder implements Coder {
         return isWhiteSpace(c) || isPad(c) || isData(c);
     }
 
+    @Override
     public String encode(byte[] abyte0) {
         if(abyte0 == null) {
             return null;
@@ -135,6 +131,7 @@ public final class Base64Coder implements Coder {
         }
     }
 
+    @Override
     public byte[] decode(String s) {
         if(s == null) {
             return null;

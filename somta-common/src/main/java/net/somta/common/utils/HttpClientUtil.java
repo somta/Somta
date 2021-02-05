@@ -45,13 +45,11 @@ import org.apache.http.util.EntityUtils;
 
 
 /**
- * org.apache.commons.httpclient.HttpClient与org.apache.http.client.HttpClient的区别
-   Commons的HttpClient项目现在是生命的尽头，不再被开发,
-       已被Apache HttpComponents项目HttpClient和的HttpCore
-      模组取代，提供更好的性能和更大的灵活性。
- * @author Kevin
- *  https://blog.csdn.net/KunGe_/article/details/78432455#
- *  https://gitee.com/jintao123/httpUtil
+ * Http请求工具
+ * Blog: https://www.somta.net/
+ * Date: 2020/1/20
+ * @author 明天的地平线
+ * @version 1.0.0
  */
 public final class HttpClientUtil {
 
@@ -81,10 +79,9 @@ public final class HttpClientUtil {
 
     /**
      * 填充请求头参数至get请求中
-     *
-     * @param httpPost
-     * @param headers
-     * @return
+     * @param httpPost 请求对象
+     * @param headers 请求头
+     * @return HttpGet
      */
     private static HttpGet setHeadersToGet(HttpGet httpPost, Map<String, String> headers) {
         if (headers != null && headers.size() != 0) {
@@ -98,10 +95,9 @@ public final class HttpClientUtil {
 
     /**
      * 填充请求头参数至Post请求中
-     *
-     * @param httpPost
-     * @param headers
-     * @return
+     * @param httpPost HttpPost
+     * @param headers 请求头
+     * @return HttpPost
      */
     private static HttpPost setHeadersToPost(HttpPost httpPost, Map<String, String> headers) {
         if (headers != null && headers.size() != 0) {
@@ -115,10 +111,9 @@ public final class HttpClientUtil {
 
     /**
      * 填充请求头参数至Put请求中
-     *
-     * @param httpPut
-     * @param headers
-     * @return
+     * @param httpPut HttpPut
+     * @param headers 请求头
+     * @return HttpPut
      */
     private static HttpPut setHeadersToPut(HttpPut httpPut, Map<String, String> headers) {
         if (headers != null && headers.size() != 0) {
@@ -132,10 +127,9 @@ public final class HttpClientUtil {
 
     /**
      * 填充请求体参数至Post请求中
-     *
-     * @param httpPost
-     * @param params
-     * @return
+     * @param httpPost HttpPost
+     * @param params 请求参数
+     * @return HttpPost
      */
     private static HttpPost setParamsToRequest(HttpPost httpPost, Map<String, Object> params) {
 
@@ -157,9 +151,8 @@ public final class HttpClientUtil {
 
     /**
      * 发送 GET 请求（HTTP），不带输入数据
-     *
-     * @param url
-     * @return
+     * @param url 请求地址
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doGet(String url) {
         return doGet(url, new HashMap<String, Object>(), new HashMap<String, String>());
@@ -167,10 +160,9 @@ public final class HttpClientUtil {
 
     /**
      * 发送 GET 请求（HTTP）,K-V形式,无请求头参数
-     *
-     * @param url
-     * @param params
-     * @return
+     * @param url 请求地址
+     * @param params 请求参数
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doGet(String url, Map<String, Object> params) {
         return doGet(url, params, null);
@@ -178,11 +170,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 GET 请求（HTTP），K-V形式，有请求头参数
-     *
      * @param url     API接口URL
      * @param params  参数map
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doGet(String url, Map<String, Object> params, Map<String, String> headers) {
 
@@ -229,9 +220,8 @@ public final class HttpClientUtil {
 
     /**
      * 发送 POST 请求（HTTP），不带输入数据
-     *
-     * @param url
-     * @return
+     * @param url 请求参数
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPost(String url) {
         return doPost(url, new HashMap<String, Object>(), new HashMap<String, String>());
@@ -240,10 +230,9 @@ public final class HttpClientUtil {
     /**
      * 发送 POST 请求（HTTP），
      * 参数为JSON形式，无请求头参数
-     *
-     * @param url
+     * @param url 请求地址
      * @param json json对象
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPost(String url, Object json) {
         return doPost(url, json, null);
@@ -252,10 +241,9 @@ public final class HttpClientUtil {
     /**
      * 发送 POST 请求（HTTP）,
      * 参数为application/x-www-form-urlencoded的K-V形式,无请求头参数
-     *
-     * @param url
-     * @param params
-     * @return
+     * @param url 请求地址
+     * @param params 请求参数
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPost(String url, Map<String, Object> params) {
         return doPost(url, params, null);
@@ -263,11 +251,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 POST 请求（HTTP），K-V形式 ，有请求头参数
-     *
      * @param url     API接口URL
      * @param params  参数map
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPost(String url, Map<String, Object> params, Map<String, String> headers) {
         CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
@@ -304,11 +291,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 POST 请求（HTTP），JSON形式，有请求头参数
-     *
-     * @param url
+     * @param url 请求地址
      * @param json    json对象
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPost(String url, Object json, Map<String, String> headers) {
         CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
@@ -349,9 +335,8 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL POST 请求（HTTPS），无K-V形式参数，无请求头参数
-     *
      * @param url API接口URL
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPostSSL(String url) {
         return doPostSSL(url, null, null);
@@ -359,10 +344,9 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL POST 请求（HTTPS），K-V形式，无请求头参数
-     *
      * @param url    API接口URL
      * @param params 参数map
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPostSSL(String url, Map<String, Object> params) {
         return doPostSSL(url, params, null);
@@ -370,11 +354,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL POST 请求（HTTPS），K-V形式，有请求头参数
-     *
      * @param url     API接口URL
      * @param params  参数map
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPostSSL(String url, Map<String, Object> params, Map<String, String> headers) {
         CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory()).setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();
@@ -412,17 +395,15 @@ public final class HttpClientUtil {
                     e.printStackTrace();
                 }
             }
-
         }
         return responseDataResult;
     }
 
     /**
      * 发送 SSL POST 请求（HTTPS），JSON形式，有请求头参数
-     *
      * @param url  API接口URL
      * @param json JSON对象
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPostSSL(String url, Object json) {
         return doPostSSL(url, json, null);
@@ -430,11 +411,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL POST 请求（HTTPS），JSON形式，有请求头参数
-     *
      * @param url     API接口URL
      * @param json    JSON对象
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPostSSL(String url, Object json, Map<String, String> headers) {
         CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory()).setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();
@@ -481,9 +461,8 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL GET 请求（HTTPs），无参数，无请求头参数
-     *
      * @param url API接口URL
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doGetSSL(String url) {
         return doGetSSL(url, null, null);
@@ -491,10 +470,9 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL GET 请求（HTTPs），K-V形式，无请求头参数
-     *
      * @param url    API接口URL
      * @param params 参数map
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doGetSSL(String url, Map<String, Object> params) {
         return doGetSSL(url, params, null);
@@ -502,11 +480,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL GET 请求（HTTPs），K-V形式，有请求头参数
-     *
      * @param url     API接口URL
      * @param params  参数map
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doGetSSL(String url, Map<String, Object> params, Map<String, String> headers) {
 
@@ -555,9 +532,8 @@ public final class HttpClientUtil {
 
     /**
      * 发送 PUT 请求（HTTP），无参数，无请求头参数
-     *
      * @param url API接口URL
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult put(String url) {
         return put(url, null, null);
@@ -565,10 +541,9 @@ public final class HttpClientUtil {
 
     /**
      * 发送 PUT 请求（HTTP），K-V形式，无请求头参数
-     *
      * @param url    API接口URL
      * @param params 参数map
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult put(String url, Map<String, String> params) {
         return put(url, params, null);
@@ -576,11 +551,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 PUT 请求（HTTP），K-V形式，有请求头参数
-     *
      * @param url     API接口URL
      * @param params  参数map
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult put(String url, Map<String, String> params, Map<String, String> headers) {
         CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
@@ -635,10 +609,9 @@ public final class HttpClientUtil {
 
     /**
      * 发送 SSL PUT 请求（HTTP），JSON形式，无请求头参数
-     *
      * @param url  API接口URL
      * @param json JSON对象
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPut(String url, Object json) {
         return doPut(url, json, null);
@@ -646,11 +619,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 PUT 请求（HTTP），JSON形式，有请求头参数
-     *
      * @param url     API接口URL
      * @param json    JSON对象
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doPut(String url, Object json, Map<String, String> headers) {
         CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
@@ -696,9 +668,8 @@ public final class HttpClientUtil {
 
     /**
      * 发送 DELETE 请求（HTTP）,无参数
-     *
      * @param url API接口URL
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doDelete(String url) {
         return doDelete(url, null, null);
@@ -706,10 +677,9 @@ public final class HttpClientUtil {
 
     /**
      * 发送 DELETE 请求（HTTP），K-V形式，无请求头参数
-     *
      * @param url    API接口URL
      * @param params 参数map
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doDelete(String url, Map<String, String> params) {
         return doDelete(url, params, null);
@@ -717,11 +687,10 @@ public final class HttpClientUtil {
 
     /**
      * 发送 DELETE 请求（HTTP），K-V形式，有请求头参数
-     *
      * @param url     API接口URL
      * @param params  参数map
      * @param headers 请求头参数
-     * @return
+     * @return ResponseDataResult
      */
     public static ResponseDataResult doDelete(String url, Map<String, String> params, Map<String, String> headers) {
         CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(requestConfig).build();
@@ -777,14 +746,13 @@ public final class HttpClientUtil {
 
     /**
      * 创建SSL安全连接
-     *
-     * @return
+     * @return SSLConnectionSocketFactory
      */
     private static SSLConnectionSocketFactory createSSLConnSocketFactory() {
         SSLConnectionSocketFactory sslsf = null;
         try {
             SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
-
+                @Override
                 public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
                     return true;
                 }

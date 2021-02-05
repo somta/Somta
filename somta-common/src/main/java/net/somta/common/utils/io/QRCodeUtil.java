@@ -69,6 +69,14 @@ public class QRCodeUtil {
 		}
 	}
 
+	/**
+	 * 将base64图片转换成BufferedImage
+	 * @param content 二维码内容
+	 * @param needCompress 是否需要压缩
+	 * @param qrcodeSize 二维码大小
+	 * @return BufferedImage
+	 * @throws Exception 异常
+	 */
 	public static BufferedImage createImages(String content, boolean needCompress, int qrcodeSize) throws Exception {
 		Hashtable<EncodeHintType, Object> hints = new Hashtable();
 		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
@@ -171,7 +179,7 @@ public class QRCodeUtil {
 	 * @param content
 	 * @param needCompress
 	 * @param qrcodeSize
-	 * @return
+	 * @return String
 	 */
 	public static String encode(String content, boolean needCompress, int qrcodeSize) {
 		BufferedImage image = null;

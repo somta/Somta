@@ -3,11 +3,11 @@ package net.somta.common.utils.io;
 import java.io.*;
 
 /**
- * @Description:
- * @Date: 2020/1/7
- * @Author: 明天的地平线
- * @Blog: https://www.somta.net/
- * @Version: 1.0.0
+ * 文件工具类
+ * Blog: https://www.somta.net/
+ * Date: 2020/1/7
+ * @author 明天的地平线
+ * @version 1.0.0
  */
 public class FileUtil {
 
@@ -61,13 +61,10 @@ public class FileUtil {
         }
     }
 
-
-
     /**
      * 从文件的完整路径名（路径+文件名）中提取 路径（包括：Drive+Directroy )
-     *
-     * @param _sFilePathName
-     * @return
+     * @param _sFilePathName 文件路径
+     * @return String
      */
     public static String extractFilePath(String _sFilePathName) {
         int nPos = _sFilePathName.lastIndexOf('/');
@@ -80,10 +77,9 @@ public class FileUtil {
 
     /**
      * 从文件的完整路径名（路径+文件名）中提取文件名(包含扩展名) <br>
-     * 如：d:\path\file.ext --> file.ext
-     *
-     * @param _sFilePathName
-     * @return
+     * 如：d:\path\file.ext - file.ext
+     * @param _sFilePathName 文件路径
+     * @return String
      */
     public static String extractFileName(String _sFilePathName) {
         return extractFileName(_sFilePathName, File.separator);
@@ -91,11 +87,10 @@ public class FileUtil {
 
     /**
      * 从文件的完整路径名（路径+文件名）中提取文件名(包含扩展名) <br>
-     * 如：d:\path\file.ext --> file.ext
-     *
+     * 如：d:\path\file.ext - file.ext
      * @param _sFilePathName  全文件路径名
      * @param _sFileSeparator 文件分隔符
-     * @return
+     * @return String
      */
     public static String extractFileName(String _sFilePathName,
                                          String _sFileSeparator) {
@@ -119,7 +114,6 @@ public class FileUtil {
 
     /**
      * 检查指定文件的路径是否存在
-     *
      * @param _sPathFileName 文件名称(含路径）
      * @return 若存在，则返回true；否则，返回false
      */
@@ -135,10 +129,9 @@ public class FileUtil {
 
     /**
      * 创建目录
-     *
      * @param _sDir             目录名称
      * @param _bCreateParentDir 如果父目录不存在，是否创建父目录
-     * @return
+     * @return boolean
      */
     public static boolean makeDir(String _sDir, boolean _bCreateParentDir) {
         boolean zResult = false;
@@ -154,7 +147,6 @@ public class FileUtil {
 
     /**
      * 移除字符串中的BOM前缀
-     *
      * @param _sLine 需要处理的字符串
      * @return 移除BOM后的字符串.
      */
@@ -186,8 +178,8 @@ public class FileUtil {
 
     /**
      * 获取文件名的后缀
-     * @param fileName
-     * @return
+     * @param fileName 文件名称
+     * @return String
      */
     public static String getFileNameSuffix(String fileName){
         String suffix = null;

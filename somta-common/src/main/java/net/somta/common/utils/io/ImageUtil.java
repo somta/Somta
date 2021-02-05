@@ -19,12 +19,11 @@ import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 /**
- *
- * @Description: 图片工具处理类
- *
- * @Date:        2018-04-11
- * @Author:      husong
- * @Version:     1.0.0
+ * 图片工具处理类
+ * Blog: https://www.somta.net/
+ * Date: 2020/1/20
+ * @author 明天的地平线
+ * @version  1.0.0
  */
 public class ImageUtil {
 
@@ -35,9 +34,8 @@ public class ImageUtil {
 
     /**
      * 检查格式是否合法
-     *
-     * @param imageType
-     * @return
+     * @param imageType 文件类型
+     * @return boolean
      */
     public static boolean checkType(String imageType) {
         boolean flag = false;
@@ -56,8 +54,8 @@ public class ImageUtil {
      * @param height  图片宽度
      * @param quality 图片压缩质量 范围：0.0~1.0，1为最高质量
      * @param scale  按照比例进行缩放 0.0~1.0
-     * @return InputStream
-     * @throws IOException
+     * @return InputStream 输入流
+     * @throws IOException 异常
      */
     public static InputStream compress(InputStream in, Integer width, Integer height, Float quality,Double scale) throws IOException {
         if (in == null) {
@@ -84,11 +82,10 @@ public class ImageUtil {
 
     /**
      * 根据图片对象获取对应InputStream
-     *
-     * @param image
-     * @param readImageFormat
-     * @return
-     * @throws IOException
+     * @param image 图片对象
+     * @param readImageFormat 图片格式
+     * @return 输入流
+     * @throws IOException 异常
      */
     public static InputStream getInputStream(BufferedImage image, String readImageFormat) throws IOException {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -100,9 +97,9 @@ public class ImageUtil {
 
     /**
      * 将文件流转成文件
-     * @param ins
-     * @param file
-     * @throws IOException
+     * @param ins 输入流
+     * @param file 文件
+     * @throws IOException 异常
      */
     public static void inputstreamToFile(InputStream ins,File file) throws IOException{
         OutputStream os = new FileOutputStream(file);
@@ -120,12 +117,12 @@ public class ImageUtil {
      * 指定大小进行缩放 若图片横比width小,高比height小,不变 若图片横比width小,高比height大,高缩小到height,图片比例不变
      * 若图片横比width大,高比height小,横缩小到width,图片比例不变
      * 若图片横比width大,高比height大,图片按比例缩小,横为width或高为height
-     *
      * @param source 输入源
      * @param output 输出源
      * @param width  宽
      * @param height 高
-     * @throws IOException
+     * @param quality 压缩比例
+     * @throws IOException 异常
      */
     public static void imgThumb(String source, String output, int width, int height, float quality) throws IOException {
         Thumbnails.of(source).size(width, height).outputQuality(quality).outputFormat("jpg").toFile(output);
@@ -133,12 +130,12 @@ public class ImageUtil {
 
     /**
      * 指定大小进行缩放
-     *
      * @param source 输入文件地址
      * @param output 输出文件地址
      * @param width  宽
      * @param height 高
-     * @throws IOException
+     * @param quality 图片品质
+     * @throws IOException 异常
      */
     public static void imgThumb(File source, String output, int width, int height, float quality) throws IOException {
         Thumbnails.of(source).size(width, height).outputQuality(quality).outputFormat("jpg").toFile(output);
@@ -146,10 +143,10 @@ public class ImageUtil {
 
     /**
      * 按照比例进行缩放
-     *
      * @param source 输入文件地址
      * @param output 输出文件地址
-     * @throws IOException
+     * @param scale 缩放比例
+     * @throws IOException 异常
      */
     public static void imgScale(String source, String output, double scale) throws IOException {
         Thumbnails.of(source).scale(scale).outputFormat("jpg").toFile(output);
@@ -161,12 +158,12 @@ public class ImageUtil {
 
     /**
      * 不按照比例,指定大小进行缩放
-     *
      * @param source          输入源
      * @param output          输出源
      * @param width           宽
      * @param height          高
      * @param keepAspectRatio 默认是按照比例缩放的,值为false 时不按比例缩放
+     * @throws IOException 异常
      */
     public static void imgNoScale(String source, String output, int width, int height, boolean keepAspectRatio)
             throws IOException {
@@ -187,8 +184,8 @@ public class ImageUtil {
      * @param watermark 水印图片地址(字符串)
      * @param transparency 透明度 0.5f
      * @param quality 图片质量 0.8f
-     * @return
-     * @throws IOException
+     * @return 输入流
+     * @throws IOException 异常
      */
     public static InputStream imgWatermark(InputStream in, Integer width, Integer height,Position position,
             String watermark, float transparency, float quality) throws IOException{
@@ -226,7 +223,7 @@ public class ImageUtil {
      * @param watermark    水印图片地址 （图片地址）
      * @param transparency 透明度 0.5f
      * @param quality      图片质量 0.8f
-     * @throws IOException
+     * @throws IOException 异常
      */
     public static void imgWatermark(String source, String output, int width, int height, Position position,
                                     String watermark, float transparency, float quality) throws IOException {
@@ -242,7 +239,6 @@ public class ImageUtil {
 
     /**
      * 裁剪图片
-     *
      * @param source          输入源
      * @param output          输出源
      * @param position        裁剪位置
@@ -251,6 +247,7 @@ public class ImageUtil {
      * @param width           宽
      * @param height          高
      * @param keepAspectRatio 默认是按照比例缩放的,值为false 时不按比例缩放
+     * @throws IOException 异常
      */
     public static void imgSourceRegion(String source, String output, Position position, int x, int y, int width,
                                        int height, boolean keepAspectRatio) throws IOException {
@@ -266,7 +263,6 @@ public class ImageUtil {
 
     /**
      * 按坐标裁剪
-     *
      * @param source          输入源
      * @param output          输出源
      * @param x               起始x坐标
@@ -276,6 +272,7 @@ public class ImageUtil {
      * @param width           宽
      * @param height          高
      * @param keepAspectRatio 默认是按照比例缩放的,值为false 时不按比例缩放
+     * @throws IOException 异常
      */
     public static void imgSourceRegion(String source, String output, int x, int y, int x1, int y1, int width,
                                        int height, boolean keepAspectRatio) throws IOException {
@@ -291,12 +288,12 @@ public class ImageUtil {
 
     /**
      * 将一个文件地址的个图片转换输出到另一个地方
-     *
      * @param source 输入源 源文件的输入地址
      * @param output 输出源 文件输出路径
      * @param width  宽
      * @param height 高
      * @param format 图片类型,gif、png、jpg
+     * @throws IOException 异常
      */
     public static void imgFormat(String source, String output, int width, int height, String format)throws IOException {
         Thumbnails.of(source).size(width, height).outputFormat(format).toFile(output);
@@ -304,12 +301,12 @@ public class ImageUtil {
 
     /**
      *
-     * @param source
-     * @param output
-     * @param width
-     * @param height
-     * @param format
-     * @throws IOException
+     * @param source 输入源
+     * @param output 输出源
+     * @param width 宽
+     * @param height 高
+     * @param format 图片格式
+     * @throws IOException 异常
      */
     public static void imgFormat(File source, String output, int width, int height, String format) throws IOException {
         Thumbnails.of(source).size(width, height).outputFormat(format).outputFormat("jpg").toFile(output);
@@ -323,6 +320,7 @@ public class ImageUtil {
      * @param width  宽
      * @param height 高
      * @return toOutputStream(流对象)
+     * @throws IOException 异常
      */
     public static OutputStream imgOutputStream(String source, String output, int width, int height) throws IOException {
         OutputStream os = new FileOutputStream(output);
@@ -338,13 +336,13 @@ public class ImageUtil {
 
     /**
      * 输出到BufferedImage
-     *
      * @param source 输入源
      * @param output 输出源
      * @param width  宽
      * @param height 高
      * @param format 图片类型,gif、png、jpg
      * @return BufferedImage
+     * @throws IOException 异常
      */
     public static BufferedImage imgBufferedImage(String source, String output, int width, int height, String format)
             throws IOException {
@@ -362,7 +360,8 @@ public class ImageUtil {
 
     /**
      * 将字符串转成BufferedImage
-     * @throws IOException
+     * @param str 图片Base64
+     * @throws IOException 异常
      */
     public static BufferedImage stringToBufferedImage(String str) throws IOException{
     	int width = 200;
@@ -389,7 +388,7 @@ public class ImageUtil {
     /**
      * 图片转化成base64字符串
      * @param imgPath 图片路径
-     * @return
+     * @return String
      */
     public static String imageToString(String imgPath) {
         String imgFile = imgPath;// 待处理的图片
@@ -420,7 +419,8 @@ public class ImageUtil {
      * 将BASE64的字符串转成图片
      * @param imgStr 图片的BASE64字符串
      * @param imgFilePath 生成的文件地址
-     * @return
+     * @return boolean
+     * @throws IOException 异常
      */
     public static boolean stringToImage(String imgStr, String imgFilePath)throws IOException {
         if (imgStr == null){
