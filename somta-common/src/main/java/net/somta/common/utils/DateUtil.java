@@ -42,7 +42,7 @@ public class DateUtil {
     }
 
     /**
-     * 判断时间否在指定时间之间
+     * 判断时间否在指定时间之间 24小时制
      * @param startHour 开始时间
      * @param endHour 结束时间
      * @return date 日期
@@ -52,7 +52,7 @@ public class DateUtil {
             return false;
         }
         Calendar c = Calendar.getInstance();
-        int currentHour = c.get(Calendar.HOUR);
+        int currentHour = c.get(Calendar.HOUR_OF_DAY);
         if(currentHour > startHour && currentHour < endHour){
             return true;
         }
