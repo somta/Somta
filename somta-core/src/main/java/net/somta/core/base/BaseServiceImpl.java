@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import net.somta.core.base.result.ResponseDataResult;
+import net.somta.core.exception.BizException;
 
 public abstract class BaseServiceImpl implements IBaseService{
 
@@ -12,7 +13,7 @@ public abstract class BaseServiceImpl implements IBaseService{
 	@Override
 	public <T> ResponseDataResult add(T t)  throws Exception{
 		if(getDao().add(t) > 0){
-			return ResponseDataResult.setErrorResponseResult("新增失败");
+			throw new  BizException("add.error","新增数据失败");
 		}
 		return ResponseDataResult.setResponseResult();
 	}
@@ -20,7 +21,7 @@ public abstract class BaseServiceImpl implements IBaseService{
 	@Override
 	public ResponseDataResult deleteById(Object id) throws Exception{
 		if(getDao().deleteById(id) > 0){
-			return ResponseDataResult.setErrorResponseResult("删除失败");
+			throw new  BizException("delete.error","根据ID删除数据失败");
 		}
 		return ResponseDataResult.setResponseResult();
 	}
@@ -28,7 +29,7 @@ public abstract class BaseServiceImpl implements IBaseService{
 	@Override
 	public <T> ResponseDataResult update(T t)  throws Exception{
 		if(getDao().update(t) > 0){
-			return ResponseDataResult.setErrorResponseResult("修改失败");
+			throw new  BizException("update.error","修改数据失败");
 		}
 		return ResponseDataResult.setResponseResult();
 	}

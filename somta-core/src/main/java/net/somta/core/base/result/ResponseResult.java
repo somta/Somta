@@ -3,10 +3,10 @@ package net.somta.core.base.result;
 
 public class ResponseResult {
 
-	protected static final Integer RES_SUCCESS_CODE = 200;
+	protected static final String RES_SUCCESS_CODE = "success";
 	protected static final String RES_SUCCESS="执行成功";
 	protected static final String RES_FAILED="执行失败";
-	protected static final Integer RES_FAILED_CODE = 500;
+	protected static final String RES_FAILED_CODE = "fail";
 
 	/**
 	 * 返回是否成功
@@ -15,7 +15,7 @@ public class ResponseResult {
 	/**
 	 * 返回码
 	 */
-	private Integer code;
+	private String code;
 	/**
 	 * 返回消息
 	 */
@@ -27,12 +27,15 @@ public class ResponseResult {
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
-	public Integer getCode() {
+
+	public String getCode() {
 		return code;
 	}
-	public void setCode(Integer code) {
+
+	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getMessage() {
 		return message;
 	}

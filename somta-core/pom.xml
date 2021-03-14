@@ -38,12 +38,18 @@
 
     <dependencies>
 
-        <!-- 数据库连接池 start -->
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+        <!-- 数据库连接池 start -->
+        <!--<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.8</version>
-        </dependency>
+        </dependency>-->
         <!-- 数据库连接池 end -->
 
         <!-- pagehelper分页 start -->

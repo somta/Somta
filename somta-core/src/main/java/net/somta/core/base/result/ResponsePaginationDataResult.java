@@ -40,7 +40,7 @@ public class ResponsePaginationDataResult extends ResponseResult {
         return setErrorResponseResult(null, message, data);
     }
 
-    public static ResponsePaginationDataResult setErrorResponseResult(Integer code ,String message,Object data) {
+    public static ResponsePaginationDataResult setErrorResponseResult(String code ,String message,Object data) {
         ResponsePaginationDataResult r = new ResponsePaginationDataResult();
         r.setTotal(0);
         r.setSuccess(false);
