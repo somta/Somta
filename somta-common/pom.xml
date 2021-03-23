@@ -6,7 +6,7 @@
 
     <groupId>net.somta</groupId>
     <artifactId>somta-common</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <name>somta-common</name>
     <description>somta common</description>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>net.somta</groupId>
             <artifactId>somta-core</artifactId>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
         </dependency>
 
         <!-- httpclient start -->

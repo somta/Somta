@@ -1,15 +1,15 @@
 package net.somta.core.base.result;
 
 
-public class ResponseDataResult extends ResponseResult {
+public class ResponseDataResult<T> extends ResponseResult {
 
-    private Object result;
+    private T result;
 
-    public Object getResult() {
+    public T getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(T result) {
         this.result = result;
     }
 
@@ -20,25 +20,21 @@ public class ResponseDataResult extends ResponseResult {
     public static ResponseDataResult setResponseResult(Object data) {
         ResponseDataResult r = new ResponseDataResult();
         r.setSuccess(true);
-        r.setCode(RES_SUCCESS_CODE);
-        r.setMessage(RES_SUCCESS);
+        r.setErrorCode(RES_SUCCESS_CODE);
+        r.setErrorMessage(RES_SUCCESS);
         r.setResult(data);
         return r;
     }
 
-    public static ResponseDataResult setErrorResponseResult(String message) {
-    	return setErrorResponseResult(message, null);
+    public static ResponseDataResult setErrorResponseResult(String errorCode ,String errorMessage) {
+    	return setErrorResponseResult(errorCode,errorMessage, null);
     }
 
-    public static ResponseDataResult setErrorResponseResult(String message,Object data) {
-        return setErrorResponseResult(null, message, data);
-    }
-
-    public static ResponseDataResult setErrorResponseResult(String code ,String message,Object data) {
+    public static ResponseDataResult setErrorResponseResult(String errorCode ,String errorMessage,Object data) {
         ResponseDataResult r = new ResponseDataResult();
         r.setSuccess(false);
-        r.setCode(code);
-        r.setMessage(message);
+        r.setErrorCode(errorCode);
+        r.setErrorMessage(errorMessage);
         r.setResult(data);
         return r;
     }

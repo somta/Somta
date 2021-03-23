@@ -2,6 +2,7 @@ package net.somta.core.base;
 
 import com.github.pagehelper.PageInfo;
 import net.somta.core.base.result.ResponseDataResult;
+import net.somta.core.base.result.ResponsePaginationDataResult;
 
 
 public interface IBaseService{
@@ -54,6 +55,6 @@ public interface IBaseService{
 	 * @return 返回结果列表
 	 * @throws Exception 异常
 	 */
-	<T> PageInfo<T> queryByList(Integer pageNum,Integer pageSize,Object param) throws Exception;
+	<T> ResponsePaginationDataResult queryByList(Integer pageNum, Integer pageSize, Object param) throws Exception;
 
 }

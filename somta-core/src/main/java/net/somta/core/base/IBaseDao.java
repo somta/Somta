@@ -36,6 +36,13 @@ public interface IBaseDao {
 	<T> T queryById(Object id);
 
 	/**
+	 * 查询列表总数
+	 * @param object 请求参数
+	 * @return 实体列表总数
+	 */
+	//int queryListCount(Object object);
+
+	/**
 	 * 查询列表
 	 * @param object 请求参数
 	 * @param <T> 实体

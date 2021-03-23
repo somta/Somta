@@ -1,52 +1,49 @@
 package net.somta.core.base.result;
 
 
-public class ResponsePaginationDataResult extends ResponseResult {
+import java.util.List;
 
-    private long total;
-    private Object result;
+public class ResponsePaginationDataResult<T> extends ResponseResult {
 
-    public long getTotal() {
+    private Long total;
+    private List<T> result;
+
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(long total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 
-    public Object getResult() {
+    public List<T> getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(List<T> result) {
         this.result = result;
     }
 
-    public static ResponsePaginationDataResult setPaginationDataResult(long total, Object result) {
+    public static ResponsePaginationDataResult setPaginationDataResult(Long total, List resultList) {
         ResponsePaginationDataResult r = new ResponsePaginationDataResult();
         r.setTotal(total);
         r.setSuccess(true);
-        r.setCode(RES_SUCCESS_CODE);
-        r.setMessage(RES_SUCCESS);
-        r.setResult(result);
+        r.setErrorCode(RES_SUCCESS_CODE);
+        r.setErrorMessage(RES_SUCCESS);
+        r.setResult(resultList);
         return r;
     }
 
-    public static ResponsePaginationDataResult setErrorResponseResult(String message) {
-    	return setErrorResponseResult(message, null);
+    public static ResponsePaginationDataResult setErrorResponseResult(String errorCode ,String errorMessage) {
+    	return setErrorResponseResult(errorCode,errorMessage, null);
     }
 
-    public static ResponsePaginationDataResult setErrorResponseResult(String message,Object data) {
-        return setErrorResponseResult(null, message, data);
-    }
-
-    public static ResponsePaginationDataResult setErrorResponseResult(String code ,String message,Object data) {
+    public static ResponsePaginationDataResult setErrorResponseResult(String errorCode ,String errorMessage,List data) {
         ResponsePaginationDataResult r = new ResponsePaginationDataResult();
-        r.setTotal(0);
+        r.setTotal(0L);
         r.setSuccess(false);
-        r.setCode(code);
-        r.setMessage(message);
-        r.setResult(data);
+        r.setErrorCode(errorCode);
+        r.setErrorMessage(errorMessage);
         return r;
     }
 

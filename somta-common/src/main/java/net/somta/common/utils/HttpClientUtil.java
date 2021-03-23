@@ -213,7 +213,6 @@ public final class HttpClientUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-        	responseDataResult.setCode(response.getStatusLine().getStatusCode());
         }
         return responseDataResult;
     }
@@ -284,7 +283,6 @@ public final class HttpClientUtil {
                     e.printStackTrace();
                 }
             }
-            responseDataResult.setCode(response.getStatusLine().getStatusCode());
         }
         return responseDataResult;
     }
@@ -328,7 +326,6 @@ public final class HttpClientUtil {
                     e.printStackTrace();
                 }
             }
-            responseDataResult.setCode(response.getStatusLine().getStatusCode());
         }
         return responseDataResult;
     }
@@ -376,7 +373,6 @@ public final class HttpClientUtil {
             if (response != null) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
-                responseDataResult.setCode(statusCode);
                 if (statusCode != HttpStatus.SC_OK || entity == null) {
                     return responseDataResult;
                 }
@@ -434,7 +430,6 @@ public final class HttpClientUtil {
             if (response != null) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
-                responseDataResult.setCode(statusCode);
                 if (statusCode != HttpStatus.SC_OK || entity == null) {
                     return responseDataResult;
                 }
@@ -454,7 +449,6 @@ public final class HttpClientUtil {
                     e.printStackTrace();
                 }
             }
-            responseDataResult.setCode(response.getStatusLine().getStatusCode());
         }
         return responseDataResult;
     }
@@ -524,7 +518,6 @@ public final class HttpClientUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-        	responseDataResult.setCode(response.getStatusLine().getStatusCode());
         }
         return responseDataResult;
     }
@@ -584,7 +577,6 @@ public final class HttpClientUtil {
             if (response != null) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
-                responseDataResult.setCode(statusCode);
                 if (statusCode != HttpStatus.SC_OK || entity == null) {
                     return responseDataResult;
                 }
@@ -643,7 +635,6 @@ public final class HttpClientUtil {
             if (response != null) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
-                responseDataResult.setCode(statusCode);
                 if (statusCode != HttpStatus.SC_OK || entity == null) {
                     return responseDataResult;
                 }
@@ -661,7 +652,6 @@ public final class HttpClientUtil {
                     e.printStackTrace();
                 }
             }
-            responseDataResult.setCode(response.getStatusLine().getStatusCode());
         }
         return responseDataResult;
     }
@@ -722,7 +712,6 @@ public final class HttpClientUtil {
             if (response != null) {
                 int statusCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
-                responseDataResult.setCode(statusCode);
                 if (statusCode != HttpStatus.SC_OK || entity == null) {
                     return responseDataResult;
                 }

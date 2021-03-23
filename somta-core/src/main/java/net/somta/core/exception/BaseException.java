@@ -1,6 +1,7 @@
 package net.somta.core.exception;
 
-import com.alibaba.druid.util.StringUtils;
+
+import org.apache.commons.lang3.StringUtils;
 
 public abstract class BaseException extends RuntimeException {
 
