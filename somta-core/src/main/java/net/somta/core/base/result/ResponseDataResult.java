@@ -20,8 +20,6 @@ public class ResponseDataResult<T> extends ResponseResult {
     public static ResponseDataResult setResponseResult(Object data) {
         ResponseDataResult r = new ResponseDataResult();
         r.setSuccess(true);
-        r.setErrorCode(RES_SUCCESS_CODE);
-        r.setErrorMessage(RES_SUCCESS);
         r.setResult(data);
         return r;
     }

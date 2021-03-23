@@ -28,8 +28,6 @@ public class ResponsePaginationDataResult<T> extends ResponseResult {
         ResponsePaginationDataResult r = new ResponsePaginationDataResult();
         r.setTotal(total);
         r.setSuccess(true);
-        r.setErrorCode(RES_SUCCESS_CODE);
-        r.setErrorMessage(RES_SUCCESS);
         r.setResult(resultList);
         return r;
     }
