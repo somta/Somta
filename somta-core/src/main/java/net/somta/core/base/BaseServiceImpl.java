@@ -39,13 +39,12 @@ public abstract class BaseServiceImpl implements IBaseService{
 	}
 
 	public <T> ResponsePaginationDataResult queryByList(Integer pageNum, Integer pageSize, Object param) throws Exception {
-        /*Integer count = getDao().queryListCount(param);
+        Long count = getDao().queryListCount(param);
         if(count > 0){
             List list = getDao().queryByList(param);
-            return ResponsePaginationDataResult.setPaginationDataResult(10L,list);
-        }*/
-		List list = getDao().queryByList(param);
-        return ResponsePaginationDataResult.setPaginationDataResult(10L,null);
+            return ResponsePaginationDataResult.setPaginationDataResult(count,list);
+        }
+        return ResponsePaginationDataResult.setPaginationDataResult(0L,null);
 	}
 
 }

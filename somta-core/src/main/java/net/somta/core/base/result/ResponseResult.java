@@ -3,11 +3,6 @@ package net.somta.core.base.result;
 
 public class ResponseResult {
 
-	protected static final String RES_SUCCESS_CODE = "success";
-	protected static final String RES_SUCCESS="执行成功";
-	protected static final String RES_FAILED="执行失败";
-	protected static final String RES_FAILED_CODE = "fail";
-
 	/**
 	 * 返回是否成功
 	 */

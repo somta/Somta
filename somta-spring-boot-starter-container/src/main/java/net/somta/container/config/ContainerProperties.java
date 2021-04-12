@@ -4,8 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 
-@ConfigurationProperties(prefix = "vip.hoody")
-//@Component
+@ConfigurationProperties(prefix = "somta.container")
+@Component
 public class ContainerProperties {
 
     private Boolean enable = true;

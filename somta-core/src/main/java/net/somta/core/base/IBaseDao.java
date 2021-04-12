@@ -40,7 +40,7 @@ public interface IBaseDao {
 	 * @param object 请求参数
 	 * @return 实体列表总数
 	 */
-	//int queryListCount(Object object);
+	long queryListCount(Object object);
 
 	/**
 	 * 查询列表
