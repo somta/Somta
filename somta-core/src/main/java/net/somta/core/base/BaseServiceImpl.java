@@ -1,8 +1,5 @@
 package net.somta.core.base;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import net.somta.core.base.result.ResponseDataResult;
 import net.somta.core.base.result.ResponsePaginationDataResult;
 import net.somta.core.exception.BizException;
