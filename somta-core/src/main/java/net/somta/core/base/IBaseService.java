@@ -1,6 +1,5 @@
 package net.somta.core.base;
 
-import com.github.pagehelper.PageInfo;
 import net.somta.core.base.result.ResponseDataResult;
 import net.somta.core.base.result.ResponsePaginationDataResult;
 
