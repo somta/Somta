@@ -51,6 +51,7 @@ import org.apache.http.util.EntityUtils;
  * @author 明天的地平线
  * @version 1.0.0
  */
+@Deprecated
 public final class HttpClientUtil {
 
 	private static PoolingHttpClientConnectionManager connMgr;
@@ -267,7 +268,14 @@ public final class HttpClientUtil {
             httpPost = setParamsToRequest(httpPost, params);
             response = httpClient.execute(httpPost);
             if (response != null) {
+                int statusCode = response.getStatusLine().getStatusCode();
                 HttpEntity entity = response.getEntity();
+                if (statusCode != HttpStatus.SC_OK || entity == null) {
+                    responseDataResult.setSuccess(false);
+                    responseDataResult.setErrorCode(String.valueOf(statusCode));
+                    responseDataResult.setErrorMessage(response.getStatusLine().getReasonPhrase());
+                    return responseDataResult;
+                }
                 httpStr = EntityUtils.toString(entity, "UTF-8");
             }
             responseDataResult.setSuccess(true);
@@ -310,7 +318,14 @@ public final class HttpClientUtil {
             httpPost.setEntity(stringEntity);
             response = httpClient.execute(httpPost);
             if (response != null) {
+                int statusCode = response.getStatusLine().getStatusCode();
                 HttpEntity entity = response.getEntity();
+                if (statusCode != HttpStatus.SC_OK || entity == null) {
+                    responseDataResult.setSuccess(false);
+                    responseDataResult.setErrorCode(String.valueOf(statusCode));
+                    responseDataResult.setErrorMessage(response.getStatusLine().getReasonPhrase());
+                    return responseDataResult;
+                }
                 httpStr = EntityUtils.toString(entity, "UTF-8");
             }
             responseDataResult.setSuccess(true);
@@ -374,6 +389,9 @@ public final class HttpClientUtil {
                 int statusCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
                 if (statusCode != HttpStatus.SC_OK || entity == null) {
+                    responseDataResult.setSuccess(false);
+                    responseDataResult.setErrorCode(String.valueOf(statusCode));
+                    responseDataResult.setErrorMessage(response.getStatusLine().getReasonPhrase());
                     return responseDataResult;
                 }
             }
@@ -713,6 +731,9 @@ public final class HttpClientUtil {
                 int statusCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
                 if (statusCode != HttpStatus.SC_OK || entity == null) {
+                    responseDataResult.setSuccess(false);
+                    responseDataResult.setErrorCode(String.valueOf(statusCode));
+                    responseDataResult.setErrorMessage(response.getStatusLine().getReasonPhrase());
                     return responseDataResult;
                 }
             }
